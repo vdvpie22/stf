@@ -37,6 +37,10 @@ module.exports = angular.module('control-panes', [
         template: require('./control-panes.pug'),
         controller: 'ControlPanesCtrl'
       })
+      .when('/user-device-control', {
+        template: require('./device-control/device-control.pug'),
+        controller: 'UserDeviceControlCtrl'
+      })
   }])
   .factory('ControlPanesService', require('./control-panes-service'))
   .controller('ControlPanesCtrl', require('./control-panes-controller'))

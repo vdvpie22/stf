@@ -144,4 +144,31 @@ module.exports = function DeviceControlCtrl($scope, DeviceService, GroupService,
     }
   }
 
+  // Освобождение устройства при обновлении/закрытии страницы
+  $window.onbeforeunload = function() {
+    if ($scope.device && $scope.device.using) {
+      // Важно: синхронные вызовы невозможны, но хотя бы инициируем освобождение
+      GroupService.kick($scope.device)
+    }
+  }
+
+  // Логирование обновления экрана user-device-control
+  if ($rootScope.userModeScreen) {
+    $scope.$watch(function() { return 1 }, function() {
+      console.log('[user-device-control] Обновление экрана');
+    });
+  }
+
+  $scope.screenLoaded = false
+
+  $scope.$on('deviceScreenLoaded', function() {
+    $scope.screenLoaded = true;
+  });
+
+  $scope.$watch('device', function(newDevice, oldDevice) {
+    if (newDevice !== oldDevice) {
+      $scope.screenLoaded = false
+    }
+  })
+
 }

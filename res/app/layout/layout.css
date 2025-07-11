@@ -1,0 +1,7 @@
+.pane-center {
+  padding-top: 55px;
+}
+
+.pane-center.user-mode {
+  padding-top: 0 !important;
+} 

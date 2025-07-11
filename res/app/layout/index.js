@@ -1,6 +1,7 @@
 require('nine-bootstrap')
 
 require('./cursor.css')
+require('./layout.css')
 require('./small.css')
 require('./stf-styles.css')
 

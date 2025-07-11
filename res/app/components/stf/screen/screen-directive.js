@@ -318,6 +318,14 @@ module.exports = function DeviceScreenDirective(
 
                   URL.revokeObjectURL(url)
                   url = null
+
+                  // Emit event only once per device
+                  if (!scope.screenLoadedOnce) {
+                    scope.screenLoadedOnce = true;
+                    scope.$applyAsync(function() {
+                      scope.$emit('deviceScreenLoaded');
+                    });
+                  }
                 }
 
                 img.onerror = function() {

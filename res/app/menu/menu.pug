@@ -19,6 +19,9 @@
         a(ng-href='/#!/settings')
           span.fa.fa-gears
           span(ng-if='!$root.basicMode', translate) Settings
+        a(ng-href='/#!/user-device-control')
+          span.fa.fa-user
+          span(translate) User Device Control
     ul.nav.stf-nav(ng-if='isAlertMessageActive()', nav-menu='current').unselectable.col-xs-5
       li.col-xs-12
         .maintenance-banner(ng-class="{'information-level': isInformationAlert(), 'warning-level': isWarningAlert(), 'critical-level': isCriticalAlert()}")
